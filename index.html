@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity & Data Analytics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, #00ffff, #ff6b6b);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ffff, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00ffff, #4ecdc4);
+            color: #0f0f23;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00ffff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff6b6b);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+            border-color: #00ffff;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cybersec-icon { color: #ff6b6b; }
+        .analytics-icon { color: #4ecdc4; }
+        .network-icon { color: #45b7d1; }
+        .forensics-icon { color: #96ceb4; }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+        }
+
+        .project-card p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-list li:hover {
+            color: #00ffff;
+            padding-left: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50px;
+        }
+
+        .contact-link:hover {
+            color: #00ffff;
+            border-color: #00ffff;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Matrix effect background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">SecAnalytics</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Cybersecurity & Data Analytics</h1>
+                <p>Securing digital infrastructures through advanced threat detection, forensics, and data-driven insights</p>
+                <a href="#projects" class="cta-button">Explore Projects</a>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <span class="project-icon cybersec-icon">🛡️</span>
+                        <h3>Advanced Threat Detection System</h3>
+                        <p>Machine learning-based intrusion detection system using behavioral analysis and anomaly detection to identify sophisticated cyber threats in real-time.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Elasticsearch</span>
+                            <span class="tech-tag">Kibana</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Code</a>
+                            <a href="#" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-icon analytics-icon">📊</span>
+                        <h3>Security Log Analytics Dashboard</h3>
+                        <p>Interactive dashboard for analyzing security logs, identifying patterns, and generating automated reports for incident response teams.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">R</span>
+                            <span class="tech-tag">Shiny</span>
+                            <span class="tech-tag">Splunk</span>
+                            <span class="tech-tag">PowerBI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Code</a>
+                            <a href="#" class="project-link">Documentation</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-icon network-icon">🌐</span>
+                        <h3>Network Traffic Analyzer</h3>
+                        <p>Deep packet inspection tool for analyzing network traffic patterns, detecting suspicious activities, and generating comprehensive security reports.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scapy</span>
+                            <span class="tech-tag">NetworkX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Code</a>
+                            <a href="#" class="project-link">Case Study</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-icon forensics-icon">🔍</span>
+                        <h3>Digital Forensics Toolkit</h3>
+                        <p>Comprehensive forensics toolkit for incident response, including memory analysis, file carving, and timeline reconstruction capabilities.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Volatility</span>
+                            <span class="tech-tag">Autopsy</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Bash</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Code</a>
+                            <a href="#" class="project-link">Tutorial</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-icon cybersec-icon">🔐</span>
+                        <h3>Vulnerability Assessment Scanner</h3>
+                        <p>Automated vulnerability scanner with custom exploit modules, risk assessment algorithms, and detailed reporting capabilities.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Code</a>
+                            <a href="#" class="project-link">Report Sample</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-icon analytics-icon">📈</span>
+                        <h3>Threat Intelligence Platform</h3>
+                        <p>Automated threat intelligence gathering and analysis platform that correlates IOCs from multiple sources and provides actionable insights.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Code</a>
+                            <a href="#" class="project-link">Architecture</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Cybersecurity</h3>
+                        <ul class="skill-list">
+                            <li>Penetration Testing</li>
+                            <li>Incident Response</li>
+                            <li>Digital Forensics</li>
+                            <li>Threat Intelligence</li>
+                            <li>Vulnerability Assessment</li>
+                            <li>Security Architecture</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data Analytics</h3>
+                        <ul class="skill-list">
+                            <li>Statistical Analysis</li>
+                            <li>Machine Learning</li>
+                            <li>Data Visualization</li>
+                            <li>Predictive Modeling</li>
+                            <li>Big Data Processing</li>
+                            <li>Business Intelligence</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>R</li>
+                            <li>SQL</li>
+                            <li>JavaScript</li>
+                            <li>Bash/PowerShell</li>
+                            <li>C/C++</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <ul class="skill-list">
+                            <li>Splunk / ELK Stack</li>
+                            <li>Wireshark</li>
+                            <li>Metasploit</li>
+                            <li>Tableau / Power BI</li>
+                            <li>AWS / Azure</li>
+                            <li>Docker / Kubernetes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p>Interested in collaborating on cybersecurity or data analytics projects?</p>
+                    <div class="contact-links">
+                        <a href="#" class="contact-link">
+                            <span>📧</span>
+                            Email
+                        </a>
+                        <a href="#" class="contact-link">
+                            <span>💼</span>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="contact-link">
+                            <span>🐙</span>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SecAnalytics Portfolio. Built with passion for cybersecurity and data science.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Matrix effect background
+        function createMatrixEffect() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            document.getElementById('matrixBg').appendChild(canvas);
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&(){}[]";
+            const matrixArray = matrix.split("");
+
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+
+            const drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(15, 15, 35, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#0F0';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 35);
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.3)';
+            }
+        });
+
+        // Initialize matrix effect
+        createMatrixEffect();
+
+        // Project card animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
